@@ -6,6 +6,7 @@ export const ProfileContainer = styled.section`
   display: flex;
   gap: 2rem;
   margin-top: -88px;
+  margin-bottom: 72px;
 
   border-radius: 10px;
   background: ${(props) => props.theme['base-profile']};
