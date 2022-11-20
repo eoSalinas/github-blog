@@ -26,8 +26,25 @@ export const GlobalStyle = createGlobalStyle`
       font: 400 1rem 'Nunito', sans-serif;
     }
 
-    h1, h2, h3, h4, h5, h6, strong {
+    h1 {
+      font-size: 1.5rem;
+      line-height: 130%;
       font-weight: 700;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 160%;
+    }
+
+    h3, h4, h5, h6, strong {
+      font-weight: 700;
+      line-height: 160%;
+    }
+
+    p {
+      line-height: 160%;
     }
 
     a {

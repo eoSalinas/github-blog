@@ -5,5 +5,6 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
 
-  background: ${(props) => props.theme['base-profile']};
+  /* background: ${(props) => props.theme['base-profile']}; */
+  background: ${(props) => props.theme['base-post']};
 `
