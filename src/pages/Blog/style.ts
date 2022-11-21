@@ -9,6 +9,7 @@ export const PostsContainer = styled.main`
 
 export const PostCard = styled.div`
   max-width: 864px;
+  width: 100%;
   height: 16.25rem;
   padding: 2rem;
   background: ${(props) => props.theme['base-post']};
