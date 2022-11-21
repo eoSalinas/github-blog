@@ -1,5 +1,5 @@
 import { useGithub } from '../../hooks/useGithub'
-import { relativeDateFormatter } from '../../utils/formatter'
+import { relativeDateFormatter } from '../../util/formatter'
 import { Profile } from './components/Profile'
 import { SearchForm } from './components/SearchForm'
 import { PostCard, PostsContainer } from './style'

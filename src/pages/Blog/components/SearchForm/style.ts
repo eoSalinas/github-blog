@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const SearchFormContainer = styled.form`
   width: 100%;
   max-width: 864px;
+  min-width: 26rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -25,7 +26,7 @@ export const SearchFormContainer = styled.form`
 
   input {
     flex: 1;
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
 
     background: ${(props) => props.theme['base-input']};
     color: ${(props) => props.theme['base-text']};

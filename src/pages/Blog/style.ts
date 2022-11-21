@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const PostsContainer = styled.main`
-  max-width: 864px;
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   gap: 2rem;
@@ -10,10 +8,17 @@ export const PostsContainer = styled.main`
 `
 
 export const PostCard = styled.div`
+  max-width: 864px;
   height: 16.25rem;
   padding: 2rem;
   background: ${(props) => props.theme['base-post']};
   border-radius: 10px;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: ${(props) => props.theme['base-label']};
+    transition: border-color 0.2s;
+  }
 
   span {
     display: flex;
