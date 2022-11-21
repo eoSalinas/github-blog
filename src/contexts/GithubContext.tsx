@@ -4,6 +4,7 @@ import { api } from '../lib/axios'
 interface GithubContextType {
   user: user
   issues: issue[]
+  fetchIssues: (query: string) => Promise<void>
 }
 
 interface GithubProviderProps {
@@ -73,7 +74,7 @@ export function GithubProvider({ children }: GithubProviderProps) {
   }, [])
 
   return (
-    <GithubContext.Provider value={{ user, issues }}>
+    <GithubContext.Provider value={{ user, issues, fetchIssues }}>
       {children}
     </GithubContext.Provider>
   )
