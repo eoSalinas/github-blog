@@ -49,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       text-decoration: none;
+      line-height: 160%;
     }
 
     button {

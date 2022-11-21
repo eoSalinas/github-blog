@@ -1,6 +1,6 @@
 import { Profile } from './components/Profile'
 import { SearchForm } from './components/SearchForm'
-import { PostCard, PostContainer } from './style'
+import { PostCard, PostsContainer } from './style'
 
 export function Blog() {
   return (
@@ -8,7 +8,7 @@ export function Blog() {
       <Profile />
       <SearchForm />
 
-      <PostContainer>
+      <PostsContainer>
         <PostCard>
           <span>
             <h2>JavaScript data types and data structures</h2>
@@ -53,7 +53,7 @@ export function Blog() {
             list the built-in data structures available in
           </p>
         </PostCard>
-      </PostContainer>
+      </PostsContainer>
     </>
   )
 }

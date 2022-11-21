@@ -36,7 +36,7 @@ export const NameHeader = styled.header`
 `
 
 export const GoToGit = styled.a`
-  height: fit-content;
+  height: 1.5rem;
 
   span {
     text-transform: uppercase;
@@ -63,6 +63,8 @@ export const Details = styled.ul`
   list-style: none;
 
   li {
+    display: flex;
+    align-items: center;
     color: ${(props) => props.theme['base-subtitle']};
 
     svg {

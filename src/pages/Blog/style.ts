@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PostContainer = styled.main`
+export const PostsContainer = styled.main`
   max-width: 864px;
   display: flex;
   flex-wrap: wrap;
