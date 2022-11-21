@@ -5,39 +5,42 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import tempAvatar from '../../../../assets/avatar.jpg'
+import { useGithub } from '../../../../hooks/useGithub'
 import { Bio, Details, GoToGit, NameHeader, ProfileContainer } from './style'
 
 export function Profile() {
+  const { user } = useGithub()
+
+  const userHasCompany = user.company
+
   return (
     <ProfileContainer>
-      <img src={tempAvatar} alt="" />
+      <img src={user.avatar} alt="" />
       <Bio>
         <NameHeader>
-          <h1>Cameron Williamson</h1>
-          <GoToGit href="">
+          <h1>{user.name}</h1>
+          <GoToGit href={user.githubLink} target="_blank">
             <span>Github</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </GoToGit>
         </NameHeader>
 
-        <p>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </p>
+        <p>{user.bio}</p>
         <Details>
           <li>
             <FontAwesomeIcon icon={faGithub} />
-            <span>cameronwll</span>
+            <span>{user.socialName}</span>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faBuilding} />
-            <span>Rocketseat</span>
-          </li>
+          {userHasCompany && (
+            <li>
+              <FontAwesomeIcon icon={faBuilding} />
+              <span>{user.company}</span>
+            </li>
+          )}
+
           <li>
             <FontAwesomeIcon icon={faUserGroup} />
-            <span>32 seguidores</span>
+            <span>{user.followers} seguidores</span>
           </li>
         </Details>
       </Bio>
