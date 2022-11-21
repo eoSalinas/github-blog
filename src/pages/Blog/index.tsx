@@ -6,7 +6,7 @@ import { Profile } from './components/Profile'
 import { SearchForm } from './components/SearchForm'
 import { PostCard, PostsContainer } from './style'
 
-interface issue {
+export interface issue {
   title: string
   body: string
   created_at: string
@@ -39,7 +39,7 @@ export function Blog() {
   return (
     <>
       <Profile />
-      <SearchForm fetchIssues={fetchIssues} />
+      <SearchForm fetchIssues={fetchIssues} issues={issues} />
 
       <PostsContainer>
         {issues.map((issue) => {
