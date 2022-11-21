@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { api } from '../../lib/axios'
 import { relativeDateFormatter } from '../../util/formatter'
 import { Profile } from './components/Profile'
@@ -44,13 +45,15 @@ export function Blog() {
         {issues.map((issue) => {
           const formattedDate = relativeDateFormatter(issue.created_at)
           return (
-            <PostCard key={issue.number}>
-              <span>
-                <h2>{issue.title}</h2>
-                <p>{formattedDate}</p>
-              </span>
-              <p>{issue.body}</p>
-            </PostCard>
+            <NavLink to="/post">
+              <PostCard key={issue.number}>
+                <span>
+                  <h2>{issue.title}</h2>
+                  <p>{formattedDate}</p>
+                </span>
+                <p>{issue.body}</p>
+              </PostCard>
+            </NavLink>
           )
         })}
       </PostsContainer>

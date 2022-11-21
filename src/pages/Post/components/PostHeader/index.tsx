@@ -6,20 +6,21 @@ import {
   faComment,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { NavLink } from 'react-router-dom'
 import { Menu, PostHeaderContainer, PostInfo } from './style'
 
 export function PostHeader() {
   return (
     <PostHeaderContainer>
       <Menu>
-        <a href="/">
+        <NavLink to="/">
           <FontAwesomeIcon icon={faAngleLeft} />
           <span>Voltar</span>
-        </a>
-        <a href="">
+        </NavLink>
+        <NavLink to="">
           <span>Ver no Github</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </a>
+        </NavLink>
       </Menu>
       <h1>Javascript data types and structures</h1>
 
