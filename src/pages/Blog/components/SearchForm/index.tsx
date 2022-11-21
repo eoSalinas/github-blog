@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { useGithub } from '../../../../hooks/useGithub'
 import { SearchFormContainer } from './style'
 
 const SearchFormSchema = z.object({
@@ -10,7 +9,11 @@ const SearchFormSchema = z.object({
 
 type SearchFormInputs = z.infer<typeof SearchFormSchema>
 
-export function SearchForm() {
+interface SearchFormProps {
+  fetchIssues: (query: string) => {}
+}
+
+export function SearchForm({ fetchIssues }: SearchFormProps) {
   const {
     register,
     handleSubmit,
@@ -20,7 +23,7 @@ export function SearchForm() {
     resolver: zodResolver(SearchFormSchema),
   })
 
-  const { fetchIssues } = useGithub()
+  // const { fetchIssues } = useGithub()
 
   function handleSearchIssue(data: SearchFormInputs) {
     fetchIssues(data.query)

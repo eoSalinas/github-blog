@@ -5,11 +5,46 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useGithub } from '../../../../hooks/useGithub'
+import { useEffect, useState } from 'react'
+import { api } from '../../../../lib/axios'
 import { Bio, Details, GoToGit, NameHeader, ProfileContainer } from './style'
 
+const username = import.meta.env.VITE_GITHUB_USERNAME
+
+interface user {
+  avatar: string
+  name: string
+  followers: number
+  company: string | null
+  bio: string
+  githubLink: string
+  socialName: string
+}
+
 export function Profile() {
-  const { user } = useGithub()
+  const [user, setUser] = useState({} as user)
+
+  async function fetchGithub() {
+    const response = await api.get(`/users/${username}`)
+    const { avatar_url, name, company, bio, html_url, followers, login } =
+      response.data
+
+    const fetchedUser = {
+      avatar: avatar_url,
+      githubLink: html_url,
+      socialName: login,
+      name,
+      company,
+      bio,
+      followers,
+    }
+
+    setUser(fetchedUser)
+  }
+
+  useEffect(() => {
+    fetchGithub()
+  }, [])
 
   const userHasCompany = user.company
 
