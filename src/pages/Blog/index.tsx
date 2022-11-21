@@ -1,58 +1,28 @@
+import { useGithub } from '../../hooks/useGithub'
 import { Profile } from './components/Profile'
 import { SearchForm } from './components/SearchForm'
 import { PostCard, PostsContainer } from './style'
 
 export function Blog() {
+  const { issues } = useGithub()
+
   return (
     <>
       <Profile />
       <SearchForm />
 
       <PostsContainer>
-        <PostCard>
-          <span>
-            <h2>JavaScript data types and data structures</h2>
-            <p>Há 1 dia</p>
-          </span>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in...
-          </p>
-        </PostCard>
-        <PostCard>
-          <span>
-            <h2>JavaScript data types and data structures</h2>
-            <p>Há 1 dia</p>
-          </span>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in...
-          </p>
-        </PostCard>
-        <PostCard>
-          <span>
-            <h2>JavaScript data types and data structures</h2>
-            <p>Há 1 dia</p>
-          </span>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in
-          </p>
-        </PostCard>
-        <PostCard>
-          <span>
-            <h2>JavaScript data types and data structures</h2>
-            <p>Há 1 dia</p>
-          </span>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in
-          </p>
-        </PostCard>
+        {issues.map((issue) => {
+          return (
+            <PostCard key={issue.number}>
+              <span>
+                <h2>{issue.title}</h2>
+                <p>{issue.created_at}</p>
+              </span>
+              <p>{issue.body}</p>
+            </PostCard>
+          )
+        })}
       </PostsContainer>
     </>
   )
