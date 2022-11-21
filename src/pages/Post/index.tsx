@@ -1,43 +1,10 @@
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import {
-  faAngleLeft,
-  faArrowUpRightFromSquare,
-  faCalendarDay,
-  faComment,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Content, Menu, PostContainer, PostHeader, PostInfo } from './style'
+import { PostHeader } from './components/PostHeader'
+import { Content, PostContainer } from './style'
 
 export function Post() {
   return (
     <PostContainer>
-      <PostHeader>
-        <Menu>
-          <a href="/">
-            <FontAwesomeIcon icon={faAngleLeft} />
-            <span>Voltar</span>
-          </a>
-          <a href="">
-            <span>Ver no Github</span>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
-        </Menu>
-        <h1>Javascript data types and structures</h1>
-        <PostInfo>
-          <li>
-            <FontAwesomeIcon icon={faGithub} />
-            cameronwll
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faCalendarDay} />
-            Há 1 dia
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faComment} />5 comentários
-          </li>
-        </PostInfo>
-      </PostHeader>
-
+      <PostHeader />
       <Content>
         <p>
           Programming languages all have built-in data structures, but these
