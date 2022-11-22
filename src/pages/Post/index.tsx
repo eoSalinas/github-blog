@@ -1,22 +1,56 @@
+import { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import { useParams } from 'react-router-dom'
+import { api } from '../../lib/axios'
 import { PostHeader } from './components/PostHeader'
 import { Content, PostContainer } from './style'
 
+const username = import.meta.env.VITE_GITHUB_USERNAME
+const repoName = import.meta.env.VITE_GITHUB_REPONAM
+
+export interface PostDetails {
+  number: number
+  url: string
+  title: string
+  comments: number
+  content: string
+  user: string
+  createdAt: string
+}
+
 export function Post() {
+  const { id } = useParams()
+  const [postDetails, setPostDetails] = useState({} as PostDetails)
+
+  async function getPostDetails() {
+    const response = await api.get(
+      `/repos/${username}/github-blog/issues/${id}`
+    )
+    const { number, html_url, title, comments, body, user, created_at } =
+      response.data
+
+    const fetchedPostDetails = {
+      number,
+      url: html_url,
+      title,
+      comments,
+      content: body,
+      user: user.login,
+      createdAt: created_at,
+    }
+
+    setPostDetails(fetchedPostDetails)
+  }
+
+  useEffect(() => {
+    getPostDetails()
+  }, [])
+
   return (
     <PostContainer>
-      <PostHeader />
+      <PostHeader postDetails={postDetails} />
       <Content>
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn. Dynamic typing JavaScript is a loosely typed and dynamic
-          language. Variables in JavaScript are not directly associated with any
-          particular value type, and any variable can be assigned (and
-          re-assigned) values of all types:
-        </p>
+        <ReactMarkdown children={postDetails.content} />
       </Content>
     </PostContainer>
   )

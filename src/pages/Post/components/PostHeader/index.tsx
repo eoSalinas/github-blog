@@ -6,53 +6,30 @@ import {
   faComment,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
-import { api } from '../../../../lib/axios'
+import { NavLink } from 'react-router-dom'
+import { PostDetails } from '../..'
 import { relativeDateFormatter } from '../../../../util/formatter'
 import { Menu, PostHeaderContainer, PostInfo } from './style'
 
-const username = import.meta.env.VITE_GITHUB_USERNAME
-const repoName = import.meta.env.VITE_GITHUB_REPONAM
+// const username = import.meta.env.VITE_GITHUB_USERNAME
+// const repoName = import.meta.env.VITE_GITHUB_REPONAM
 
-interface PostDetails {
-  number: number
-  url: string
-  title: string
-  comments: number
-  content: string
-  user: string
-  createdAt: string
+// interface PostDetails {
+//   number: number
+//   url: string
+//   title: string
+//   comments: number
+//   content: string
+//   user: string
+//   createdAt: string
+// }
+
+interface PostHeaderProps {
+  postDetails: PostDetails
 }
 
-export function PostHeader() {
-  const { id } = useParams()
-  const [postDetails, setPostDetails] = useState({} as PostDetails)
-
-  async function getPostDetails() {
-    const response = await api.get(`repos/${username}/github-blog/issues/${id}`)
-    const { number, html_url, title, comments, body, user, created_at } =
-      response.data
-
-    const fetchedPostDetails = {
-      number,
-      url: html_url,
-      title,
-      comments,
-      content: body,
-      user: user.login,
-      createdAt: created_at,
-    }
-
-    setPostDetails(fetchedPostDetails)
-    console.log(response.data)
-  }
-
+export function PostHeader({ postDetails }: PostHeaderProps) {
   const formattedDate = relativeDateFormatter(postDetails.createdAt)
-
-  useEffect(() => {
-    getPostDetails()
-  }, [])
 
   return (
     <PostHeaderContainer>
