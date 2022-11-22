@@ -45,8 +45,8 @@ export function Blog() {
         {issues.map((issue) => {
           const formattedDate = relativeDateFormatter(issue.created_at)
           return (
-            <NavLink to="/post">
-              <PostCard key={issue.number}>
+            <NavLink to={`/post/${issue.number}`} key={issue.number}>
+              <PostCard>
                 <span>
                   <h2>{issue.title}</h2>
                   <p>{formattedDate}</p>

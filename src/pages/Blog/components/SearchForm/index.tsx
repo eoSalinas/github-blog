@@ -30,13 +30,13 @@ export function SearchForm({ fetchIssues, issues }: SearchFormProps) {
     reset()
   }
 
-  const amountOfPublications = issues.length
+  const numberOfPublications = issues.length
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchIssue)}>
       <span>
         <h3>Publicações</h3>
-        <p>{amountOfPublications} publicações</p>
+        <p>{numberOfPublications} publicações</p>
       </span>
 
       <input

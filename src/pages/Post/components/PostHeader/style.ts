@@ -22,6 +22,7 @@ export const Menu = styled.nav`
     text-transform: uppercase;
     font-size: 0.75rem;
     color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid transparent;
 
     &:first-child {
       svg {
@@ -36,8 +37,8 @@ export const Menu = styled.nav`
     }
 
     &:hover {
-      border-bottom: 1px solid ${(props) => props.theme['blue']};
-      transition: border-bottom 0.2s;
+      border-color: ${(props) => props.theme['blue']};
+      transition: border-color 0.2s;
     }
   }
 `

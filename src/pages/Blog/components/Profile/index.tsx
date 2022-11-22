@@ -11,7 +11,7 @@ import { Bio, Details, GoToGit, NameHeader, ProfileContainer } from './style'
 
 const username = import.meta.env.VITE_GITHUB_USERNAME
 
-interface user {
+interface User {
   avatar: string
   name: string
   followers: number
@@ -22,7 +22,7 @@ interface user {
 }
 
 export function Profile() {
-  const [user, setUser] = useState({} as user)
+  const [user, setUser] = useState<User>({} as User)
 
   async function fetchGithub() {
     const response = await api.get(`/users/${username}`)
