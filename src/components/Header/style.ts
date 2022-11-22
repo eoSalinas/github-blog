@@ -1,10 +1,12 @@
 import styled from 'styled-components'
+import headerOverlay from '../../assets/header-overlay.png'
 
 export const HeaderContainer = styled.header`
-  padding: 4rem 18rem 8.375rem;
+  width: 100%;
+  height: 18.5rem;
+  background: url(${headerOverlay}) no-repeat center;
+  background-size: cover;
   display: flex;
+  align-items: center;
   justify-content: center;
-
-  /* background: ${(props) => props.theme['base-profile']}; */
-  background: ${(props) => props.theme['base-post']};
 `
